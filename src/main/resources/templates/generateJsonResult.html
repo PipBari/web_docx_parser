@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Результат генерации JSON</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/">Сравнить два документа</a>
+    <a href="/compareWithJson">Сравнить документ с JSON</a>
+    <a href="/generateJson">Генерация JSON</a>
+</div>
+<div class="main-content">
+    <h1 th:text="${message}"></h1>
+    <pre th:text="${jsonContent}"></pre>
+    <a href="/downloadJson" class="custom-file-upload">Скачать JSON</a><br><br>
+    <a href="/generateJson">Создать новый JSON</a>
+</div>
+</body>
+</html>

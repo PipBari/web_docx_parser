@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Сравнение двух документов</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/">Сравнить два документа</a>
+    <a href="/compareWithJson">Сравнить документ с JSON</a>
+    <a href="/generateJson">Генерация JSON</a>
+</div>
+<div class="main-content">
+    <h1>Загрузите документы для сравнения</h1>
+    <form method="post" action="/compare" enctype="multipart/form-data">
+        <label for="file1">Документ 1:</label>
+        <label for="file1" class="custom-file-upload">
+            Выберите файл
+        </label>
+        <input type="file" id="file1" name="file1" required onchange="updateFileName('file1', 'file1-name')">
+        <span id="file1-name">Файл не выбран</span><br><br>
+
+        <label for="file2">Документ 2:</label>
+        <label for="file2" class="custom-file-upload">
+            Выберите файл
+        </label>
+        <input type="file" id="file2" name="file2" required onchange="updateFileName('file2', 'file2-name')">
+        <span id="file2-name">Файл не выбран</span><br><br>
+
+        <button type="submit">Сравнить</button>
+    </form>
+</div>
+<script>
+    function updateFileName(inputId, spanId) {
+        const input = document.getElementById(inputId);
+        const span = document.getElementById(spanId);
+        span.textContent = input.files[0] ? input.files[0].name : 'Файл не выбран';
+    }
+</script>
+</body>
+</html>

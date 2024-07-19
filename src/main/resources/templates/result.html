@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Результат Сравнения</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/">Сравнить два документа</a>
+    <a href="/compareWithJson">Сравнить документ с JSON</a>
+</div>
+<div class="main-content">
+    <h1>Результат Сравнения</h1>
+    <p th:text="'Документы ' + (${areEqual} ? 'совпадают' : 'не совпадают')"></p>
+    <p th:if="${message}" th:text="${message}"></p>
+    <a href="/">Сравнить снова</a>
+</div>
+</body>
+</html>

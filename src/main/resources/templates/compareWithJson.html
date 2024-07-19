@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Сравнение документа с JSON</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/">Сравнить два документа</a>
+    <a href="/compareWithJson">Сравнить документ с JSON</a>
+    <a href="/generateJson">Генерация JSON</a>
+</div>
+<div class="main-content">
+    <h1>Загрузите документ и конфигурационный файл для сравнения</h1>
+    <form method="post" action="/compareWithJson" enctype="multipart/form-data">
+        <label for="file">Документ:</label>
+        <label for="file" class="custom-file-upload">
+            Выберите файл
+        </label>
+        <input type="file" id="file" name="file" required onchange="updateFileName('file', 'file-name')">
+        <span id="file-name">Файл не выбран</span><br><br>
+
+        <label for="configFile">Конфигурационный файл (JSON):</label>
+        <label for="configFile" class="custom-file-upload">
+            Выберите файл
+        </label>
+        <input type="file" id="configFile" name="configFile" required onchange="updateFileName('configFile', 'configFile-name')">
+        <span id="configFile-name">Файл не выбран</span><br><br>
+
+        <button type="submit">Сравнить</button>
+    </form>
+</div>
+<script>
+    function updateFileName(inputId, spanId) {
+        const input = document.getElementById(inputId);
+        const span = document.getElementById(spanId);
+        span.textContent = input.files[0] ? input.files[0].name : 'Файл не выбран';
+    }
+</script>
+</body>
+</html>

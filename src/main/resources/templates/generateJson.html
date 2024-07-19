@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Генерация конфигурационного JSON</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="sidebar">
+    <a href="/">Сравнить два документа</a>
+    <a href="/compareWithJson">Сравнить документ с JSON</a>
+    <a href="/generateJson">Генерация JSON</a>
+</div>
+<div class="main-content">
+    <h1>Создание конфигурационного JSON</h1>
+    <form method="post" action="/generateJson">
+        <div id="fields">
+            <div class="field">
+                <label>Поле 1: <input type="text" name="fields" required></label>
+                <button type="button" onclick="removeField(this)">Удалить</button>
+            </div>
+        </div>
+        <button type="button" onclick="addField()">Добавить поле</button><br><br>
+        <button type="submit">Сгенерировать JSON</button>
+    </form>
+</div>
+<script>
+    function addField() {
+        const fieldsDiv = document.getElementById('fields');
+        const fieldCount = fieldsDiv.getElementsByClassName('field').length + 1;
+        const newField = document.createElement('div');
+        newField.className = 'field';
+        newField.innerHTML = `<label>Поле ${fieldCount}: <input type="text" name="fields" required></label> <button type="button" onclick="removeField(this)">Удалить</button>`;
+        fieldsDiv.appendChild(newField);
+    }
+
+    function removeField(button) {
+        const fieldDiv = button.parentElement;
+        fieldDiv.remove();
+    }
+</script>
+</body>
+</html>
